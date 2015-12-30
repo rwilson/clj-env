@@ -1,0 +1,4 @@
+({:ns bad.namespace
+  :bindings {*foo* "bar"}}
+ {:ns clj-env.core-test
+  :bindings {*var-not-exists* :a}})

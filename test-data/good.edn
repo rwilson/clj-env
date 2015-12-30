@@ -1,0 +1,4 @@
+({:ns clj-env.core-test
+  :bindings {*test-int* 1
+             *test-kw* :ya
+             *test-map* {:e "f" :g "h"}}})
