@@ -6,7 +6,7 @@
 ;   the terms of this license.
 ;   You must not remove this notice, or any other, from this software.
 
-(defproject rwilson/clj-env "0.1.0"
+(defproject rwilson/clj-env "0.1.1-SNAPSHOT"
   :description "Environment configuration library"
   :url "http://github.com/rwilson/clj-env/"
   :license {:name "Eclipse Public License"
@@ -21,7 +21,7 @@
 
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [com.taoensso/timbre "4.2.0"]
-                 [rwilson/clj-lib "0.1.0"]]
+                 [rwilson/clj-lib "0.1.1"]]
 
   :plugins [[lein-codox "0.9.1"]]
 
@@ -45,4 +45,11 @@
                    :regression :regression
                    :all (constantly true)}
 
-  :profiles {:uberjar {:aot all}})
+  :profiles {:uberjar {:aot all}}
+
+  :release-tasks [["vcs" "assert-committed"]
+                  ["change" "version"
+                   "leiningen.release/bump-version" "release"]
+                  ["vcs" "commit"]
+                  ["vcs" "tag"]
+                  ["deploy"]])

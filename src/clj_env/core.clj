@@ -18,8 +18,9 @@
             [clojure.edn :as edn]
             [clojure.pprint :refer (pprint)]
             [clojure.string :as clj-str]
-            [clj-lib.util :as util :refer (safe mapmerge)]
-            [clj-lib.types :as types :refer (to-string)]))
+            [clj-lib
+             [core :refer (safe)]
+             [types :refer (->string)]]))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; The core of the core...
@@ -111,7 +112,7 @@
   "Converts the env file format into a map that can be passed to with-bindings.
    Throws an Exception if there is an invalid config."
   [env]
-  (mapmerge resolve-bindings env))
+  (apply merge (map resolve-bindings env)))
 
 
 (defmacro with-env
@@ -123,7 +124,7 @@
    [CLJ-1565](http://dev.clojure.org/jira/browse/CLJ-1565) is resolved."
   [map]
   (persistent! (reduce-kv
-                (fn [m k v] (assoc! m (to-string k) v))
+                (fn [m k v] (assoc! m (->string k) v))
                 (transient {})
                 map)))
 
