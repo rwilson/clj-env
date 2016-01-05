@@ -6,7 +6,7 @@
 ;   the terms of this license.
 ;   You must not remove this notice, or any other, from this software.
 
-(defproject rwilson/clj-env "0.1.1-SNAPSHOT"
+(defproject rwilson/clj-env "0.1.1"
   :description "Environment configuration library"
   :url "http://github.com/rwilson/clj-env/"
   :license {:name "Eclipse Public License"
